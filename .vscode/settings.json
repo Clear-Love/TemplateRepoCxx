@@ -95,5 +95,9 @@
         "io_context": "cpp",
         "netfwd": "cpp"
     },
-    "cmake.buildTask": true
+    "cmake.buildTask": true,
+    "cmake.configureSettings": {
+        "VCPKG_TARGET_TRIPLET": "x64-linux",
+        "CMAKE_TOOLCHAIN_FILE": "${env:VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
+    }
 }
