@@ -8,7 +8,9 @@
             // Resolved by CMake Tools:
             "program": "${command:cmake.launchTargetPath}",
             // Place your args here
-            "args": ["-l", "1234"],
+            "args": [
+                "20"
+            ],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [

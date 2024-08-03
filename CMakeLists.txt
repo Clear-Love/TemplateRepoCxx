@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.20.0)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 # set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_C_STANDARD 11)
 
@@ -9,12 +9,17 @@ if (NOT CMAKE_BUILD_TYPE)
     message("Setting default build type to Release")
 endif()
 
-project(my_project_name VERSION 0.0.1 LANGUAGES C CXX)
+project(proj VERSION 0.0.1 LANGUAGES C CXX)
 
 include_directories(${PROJECT_SOURCE_DIR}/include)
 
-add_subdirectory(./src)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
-add_subdirectory(./test)
+find_package(fmt REQUIRED)
 
-add_subdirectory(./example)
+file(GLOB_RECURSE all_srcs ./src/*.cpp)
+
+add_executable(main ${all_srcs})
+
+set_target_properties(main PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
+target_link_libraries(main PRIVATE fmt::fmt)
